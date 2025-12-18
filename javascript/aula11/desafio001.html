@@ -6,23 +6,32 @@
     <title>Nacionalidade..</title>
 </head>
 <body>
-    <h1>Estrangeiro ou Brasileiro</h1>
-    Digite seu pais<input type="text" name="txtpaís" id="txtpaís">
-    <input type="button" value="Enviar" onclick="calcular()">
-    <div id="país">
-
-    </div>
+    <h1>Estrangeiro ou Brasileiro?</h1>
+    Digite seu país: <input type="text" name="txtpaís" id="txtpaís" placeholder="Ex: Brasil">
+    <input type="button" value="Verificar" onclick="VerificarPaís()">
+    <div id="país"></div>
     <script>
-        function pais(){
-            var p = document.querySelector('input#txtpaís')
-            var pais = document.querySelector('div#país')
-            var resposta = Text(p.Text)
-            pais.innerHTML = `Você é de ${país}`
-            if (pais == brasil){
-                pais.innerHTML += `Você é Brasileiro, nasceu no ${brasil}`
+        function VerificarPaís(){
+            var input = document.querySelector('input#txtpaís');
+            var res = document.querySelector('div#país');
+            var resposta = input.value.trim();
+
+            
+
+            if (resposta === ""){
+                res.innerHTML = `<p><strong>Por favor, Digite o nome do seu país!!</strong></p>`
+                return;
+            }
+
+            res.innerHTML = `<p>Você digitou <strong>${resposta}</strong></p>`
+
+            var paisLower = resposta.toLowerCase();
+
+            if (paisLower === "brasil") {
+                res.innerHTML += `Você é Brasiliro!!`;
 
             }else {
-                pais.innerHTML += `Você é Estrangeiro, nasceu no país ${pais}`
+                res.innerHTML += `Você é Estrangeiro!!`;
             }
         }
     </script>
